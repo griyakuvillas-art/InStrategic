@@ -839,5 +839,223 @@ body {
         });
     });
     </script>
-<script>let ihsgChart,currentRange='5Y';async function fetchHistoricalData(s,r){try{let i='1d',p=r.toLowerCase();if(r==='1D'){i='5m';p='1d'}else if(r==='1W'){i='30m';p='5d'}else if(r==='1M')p='1mo';else if(r==='6M')p='6mo';else if(r==='1Y')p='1y';else if(r==='5Y')p='5y';else if(r==='MAX')p='max';const u=`https://query1.finance.yahoo.com/v8/finance/chart/${s}?interval=${i}&range=${p}`;const res=await fetch(u);const data=await res.json();if(data.chart&&data.chart.result&&data.chart.result[0]){const result=data.chart.result[0];const ts=result.timestamp;const prices=result.indicators.quote[0].close;const labels=ts.map(t=>new Date(t*1000));const chartData=prices.map((price,i)=>price||prices[i-1]||0);return{labels,data:chartData}}return{labels:[],data:[]}}catch(e){return{labels:[],data:[]}}}function initChart(){const ctx=document.getElementById('ihsgChart').getContext('2d');ihsgChart=new Chart(ctx,{type:'line',data:{labels:[],datasets:[{label:'IHSG',data:[],borderColor:'#6800FC',backgroundColor:'rgba(104,0,252,0.1)',borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{display:true,grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#9ca3af'}},y:{display:true,position:'right',grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#9ca3af'}}}}})}async function updateChart(r){const d=await fetchHistoricalData('^JKSE',r);if(ihsgChart&&d.labels.length>0){ihsgChart.data.labels=d.labels;ihsgChart.data.datasets[0].data=d.data;ihsgChart.update('none')}}function changeTimeRange(r){currentRange=r;document.querySelectorAll('[id^="btn-"]').forEach(b=>{b.style.background='rgba(104,0,252,0.2)';b.style.border='1px solid rgba(104,0,252,0.3)';b.style.boxShadow='none'});const a=document.getElementById(`btn-${r}`);if(a){a.style.background='linear-gradient(135deg,#6800FC,#8B5CF6)';a.style.border='1px solid #6800FC';a.style.boxShadow='0 4px 12px rgba(104,0,252,0.5)'}updateChart(r)}document.addEventListener('DOMContentLoaded',async function(){if(document.getElementById('ihsgChart')){initChart();await updateChart('5Y')}});</script></body>
+<script>
+// Chart variables
+let ihsgChart;
+let currentRange = '5Y';
+
+// Fetch historical data from Yahoo Finance
+async function fetchHistoricalData(symbol, range) {
+    try {
+        let interval = '1d';
+        let period = range.toLowerCase();
+        
+        // Set interval and period based on range
+        if (range === '1D') {
+            interval = '5m';
+            period = '1d';
+        } else if (range === '1W') {
+            interval = '30m';
+            period = '5d';
+        } else if (range === '1M') {
+            period = '1mo';
+        } else if (range === '6M') {
+            period = '6mo';
+        } else if (range === '1Y') {
+            period = '1y';
+        } else if (range === '5Y') {
+            period = '5y';
+        } else if (range === 'MAX') {
+            period = 'max';
+        }
+        
+        const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=${interval}&range=${period}`;
+        console.log('📊 Fetching data:', url);
+        
+        const response = await fetch(url);
+        console.log('✅ Response status:', response.status);
+        
+        const data = await response.json();
+        
+        if (data.chart && data.chart.result && data.chart.result[0]) {
+            const result = data.chart.result[0];
+            const timestamps = result.timestamp;
+            const prices = result.indicators.quote[0].close;
+            
+            const labels = timestamps.map(ts => new Date(ts * 1000));
+            const chartData = prices.map((price, i) => price || prices[i-1] || 0);
+            
+            console.log('✅ Data loaded:', chartData.length, 'points');
+            console.log('📈 Sample prices:', chartData.slice(0, 5));
+            
+            return { labels, data: chartData };
+        }
+        
+        console.warn('⚠️ No data in response');
+        return { labels: [], data: [] };
+    } catch (error) {
+        console.error('❌ Error fetching data:', error);
+        return { labels: [], data: [] };
+    }
+}
+
+// Initialize Chart.js
+function initChart() {
+    const canvas = document.getElementById('ihsgChart');
+    if (!canvas) {
+        console.error('❌ Canvas element not found!');
+        return;
+    }
+    
+    const ctx = canvas.getContext('2d');
+    console.log('🎨 Initializing Chart.js...');
+    
+    ihsgChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'IHSG',
+                data: [],
+                borderColor: '#6800FC',
+                backgroundColor: 'rgba(104, 0, 252, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 6,
+                pointHoverBackgroundColor: '#6800FC',
+                pointHoverBorderColor: '#fff',
+                pointHoverBorderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(10, 10, 15, 0.9)',
+                    titleColor: '#fff',
+                    bodyColor: '#a78bfa',
+                    borderColor: '#6800FC',
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: false,
+                    callbacks: {
+                        label: function(context) {
+                            return 'IHSG: ' + context.parsed.y.toLocaleString('id-ID', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            });
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: '#9ca3af',
+                        maxTicksLimit: 8
+                    }
+                },
+                y: {
+                    display: true,
+                    position: 'right',
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: '#9ca3af',
+                        callback: function(value) {
+                            return value.toLocaleString('id-ID');
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    console.log('✅ Chart initialized!');
+}
+
+// Update chart with new data
+async function updateChart(range) {
+    console.log('🔄 Updating chart for range:', range);
+    
+    const data = await fetchHistoricalData('^JKSE', range);
+    
+    if (ihsgChart && data.labels.length > 0) {
+        ihsgChart.data.labels = data.labels;
+        ihsgChart.data.datasets[0].data = data.data;
+        ihsgChart.update('none');
+        console.log('✅ Chart updated!');
+    } else {
+        console.error('❌ Failed to update chart. Data length:', data.data.length);
+    }
+}
+
+// Change time range
+function changeTimeRange(range) {
+    console.log('🔘 Changing time range to:', range);
+    currentRange = range;
+    
+    // Update button styles
+    document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+        btn.style.background = 'rgba(104, 0, 252, 0.2)';
+        btn.style.border = '1px solid rgba(104, 0, 252, 0.3)';
+        btn.style.boxShadow = 'none';
+    });
+    
+    const activeBtn = document.getElementById(`btn-${range}`);
+    if (activeBtn) {
+        activeBtn.style.background = 'linear-gradient(135deg, #6800FC, #8B5CF6)';
+        activeBtn.style.border = '1px solid #6800FC';
+        activeBtn.style.boxShadow = '0 4px 12px rgba(104, 0, 252, 0.5)';
+    }
+    
+    updateChart(range);
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', async function() {
+    console.log('🚀 Page loaded, checking for chart...');
+    
+    // Wait for Chart.js to load
+    if (typeof Chart === 'undefined') {
+        console.error('❌ Chart.js not loaded!');
+        return;
+    }
+    
+    const canvas = document.getElementById('ihsgChart');
+    if (!canvas) {
+        console.error('❌ Chart canvas not found!');
+        return;
+    }
+    
+    console.log('✅ Chart.js loaded, canvas found');
+    
+    // Initialize chart
+    initChart();
+    
+    // Load initial data (5 years)
+    console.log('📊 Loading 5 years data...');
+    await updateChart('5Y');
+    
+    console.log('🎉 Chart ready!');
+});
+</script>
+</body>
 </html>
