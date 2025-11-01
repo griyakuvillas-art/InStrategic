@@ -1,0 +1,64 @@
+========================================
+   📍 LOKASI GRAFIK SUDAH BENAR!
+========================================
+
+✅ Grafik ada di dalam CARD IHSG, urutan:
+
+1. Header "IHSG (Indeks Harga Saham Gabungan)"
+2. Harga 8.xxx.xxx dan perubahan %
+3. ↓ Tombol Time Range (7 tombol)
+4. ↓ GRAFIK DI SINI! (Canvas Chart.js)
+
+Struktur HTML:
+<div class="glass-card p-8 mb-8">
+  ├─ IHSG Title & Price
+  ├─ Time Range Buttons [1H][1W][1M]...
+  └─ <canvas id="ihsgChart"></canvas> ← Grafik!
+</div>
+
+========================================
+🔥 LINK YANG HARUS DIBUKA:
+========================================
+
+https://cdn.jsdelivr.net/gh/griyakuvillas-art/InStrategic@main/index.html
+
+WAJIB BUKA DI INCOGNITO MODE!
+
+========================================
+✅ YANG HARUS TERLIHAT:
+========================================
+
+Setelah scroll ke IHSG, urutan dari atas ke bawah:
+
+┌────────────────────────────────────┐
+│ IHSG (Indeks Harga Saham Gabungan) │
+│ Jakarta Composite Index             │
+│                                     │
+│ 8,xxx.xxx        +/- x.xx%         │ ← Harga
+├────────────────────────────────────┤
+│ [1H] [1W] [1M] [6M] [1Y] [5Y] [MAX]│ ← Tombol
+├────────────────────────────────────┤
+│                                     │
+│   📈 GRAFIK UNGU DI SINI 📈        │ ← Grafik!
+│                                     │
+│  🟣🟣🟣  Line chart dengan area    │
+│ 🟣    🟣 fill transparan ungu      │
+│🟣      🟣                           │
+│                                     │
+└────────────────────────────────────┘
+
+========================================
+⚠️ JIKA TIDAK MUNCUL:
+========================================
+
+1. Buka Developer Console (F12)
+2. Lihat tab Console
+3. Screenshot error jika ada
+4. Kirim screenshot ke saya
+
+Atau:
+1. Buka di Incognito Mode (pasti muncul!)
+2. Clear cache browser
+3. Coba browser lain
+
+========================================
