@@ -872,7 +872,7 @@ window.addEventListener('load', async function() {
     
     // Check if Chart.js loaded
     if (typeof Chart === 'undefined') {
-        console.error('❌ Chart.js NOT loaded! Retrying in 2 seconds...');
+        console.error('? Chart.js NOT loaded! Retrying in 2 seconds...');
         setTimeout(initializeChart, 2000);
         return;
     }
@@ -881,14 +881,14 @@ window.addEventListener('load', async function() {
 });
 
 async function initializeChart() {
-    console.log('✅ Chart.js loaded');
+    console.log('? Chart.js loaded');
     
     const canvas = document.getElementById('ihsgChart');
     if (!canvas) {
-        console.error('❌ Canvas not found!');
+        console.error('? Canvas not found!');
         return;
     }
-    console.log('✅ Canvas found');
+    console.log('? Canvas found');
     
     // Create chart
     const ctx = canvas.getContext('2d');
@@ -899,14 +899,14 @@ async function initializeChart() {
             datasets: [{
                 label: 'IHSG',
                 data: [],
-                borderColor: '#6800FC',
-                backgroundColor: 'rgba(104, 0, 252, 0.15)',
-                borderWidth: 3,
+                borderColor: '#A78BFA',
+                backgroundColor: 'rgba(167, 139, 250, 0.2)',
+                borderWidth: 4,
                 fill: true,
                 tension: 0.4,
                 pointRadius: 0,
                 pointHoverRadius: 8,
-                pointHoverBackgroundColor: '#6800FC',
+                pointHoverBackgroundColor: '#A78BFA',
                 pointHoverBorderColor: '#fff',
                 pointHoverBorderWidth: 2
             }]
@@ -950,14 +950,14 @@ async function initializeChart() {
         }
     });
     
-    console.log('✅ Chart created');
+    console.log('? Chart created');
     
     // Load initial data
     await loadChartData('5Y');
 }
 
 async function loadChartData(range) {
-    console.log('📊 Loading data for range:', range);
+    console.log('?? Loading data for range:', range);
     
     try {
         let interval = '1d';
@@ -972,23 +972,23 @@ async function loadChartData(range) {
         else if (range === 'MAX') { period = 'max'; }
         
         const url = `https://query1.finance.yahoo.com/v8/finance/chart/^JKSE?interval=${interval}&range=${period}`;
-        console.log('🔗 Fetching:', url);
+        console.log('?? Fetching:', url);
         
         const response = await fetch(url);
-        console.log('✅ Response:', response.status);
+        console.log('? Response:', response.status);
         
         if (!response.ok) {
-            console.error('❌ API Response not OK:', response.status);
+            console.error('? API Response not OK:', response.status);
             // Use mock data if API fails
             useMockData(range);
             return;
         }
         
         const json = await response.json();
-        console.log('✅ JSON parsed');
+        console.log('? JSON parsed');
         
         if (!json.chart || !json.chart.result || !json.chart.result[0]) {
-            console.error('❌ Invalid API response structure');
+            console.error('? Invalid API response structure');
             // Use mock data if response invalid
             useMockData(range);
             return;
@@ -998,8 +998,8 @@ async function loadChartData(range) {
         const timestamps = result.timestamp;
         const prices = result.indicators.quote[0].close;
         
-        console.log('✅ Data received:', timestamps.length, 'points');
-        console.log('📈 First 5 prices:', prices.slice(0, 5));
+        console.log('? Data received:', timestamps.length, 'points');
+        console.log('?? First 5 prices:', prices.slice(0, 5));
         
         // Process data
         const labels = timestamps.map(ts => new Date(ts * 1000));
@@ -1010,21 +1010,21 @@ async function loadChartData(range) {
             window.ihsgChart.data.labels = labels;
             window.ihsgChart.data.datasets[0].data = data;
             window.ihsgChart.update();
-            console.log('✅ Chart updated with', data.length, 'REAL data points from Yahoo Finance');
+            console.log('? Chart updated with', data.length, 'REAL data points from Yahoo Finance');
         } else {
-            console.error('❌ Chart object not found!');
+            console.error('? Chart object not found!');
         }
         
     } catch (error) {
-        console.error('❌ Error loading data:', error);
-        console.log('🔄 Using mock data as fallback...');
+        console.error('? Error loading data:', error);
+        console.log('?? Using mock data as fallback...');
         useMockData(range);
     }
 }
 
 // Mock data fallback - generate realistic IHSG data
 function useMockData(range) {
-    console.log('📊 Using MOCK data for range:', range);
+    console.log('?? Using MOCK data for range:', range);
     
     let numPoints = 1206; // 5 years default
     if (range === '1D') numPoints = 78;
@@ -1063,13 +1063,13 @@ function useMockData(range) {
         window.ihsgChart.data.labels = labels;
         window.ihsgChart.data.datasets[0].data = data;
         window.ihsgChart.update();
-        console.log('✅ Chart updated with', data.length, 'MOCK data points');
-        console.log('📊 MOCK data range:', Math.min(...data).toFixed(2), '-', Math.max(...data).toFixed(2));
+        console.log('? Chart updated with', data.length, 'MOCK data points');
+        console.log('?? MOCK data range:', Math.min(...data).toFixed(2), '-', Math.max(...data).toFixed(2));
     }
 }
 
 function changeRange(range) {
-    console.log('🔘 Button clicked:', range);
+    console.log('?? Button clicked:', range);
     
     // Update button styles
     document.querySelectorAll('.range-btn').forEach(btn => {
