@@ -1,0 +1,70 @@
+========================================
+   ?? LINK WEBSITE YANG BISA DILIHAT
+========================================
+
+? LINK YANG BENAR (Render HTML, bukan kode):
+
+1?? GITHACK (PALING BAGUS - LANGSUNG TAMPIL):
+https://rawcdn.githack.com/griyakuvillas-art/InStrategic/main/index.html
+
+2?? STATICALLY (Alternatif):
+https://cdn.statically.io/gh/griyakuvillas-art/InStrategic/main/index.html
+
+3?? JSDELIVR (Fast CDN):
+https://cdn.jsdelivr.net/gh/griyakuvillas-art/InStrategic@main/index.html
+
+========================================
+?? CARA BUKA DI HP:
+========================================
+
+1. Copy link nomor 1 (Githack) - ini yang terbaik
+2. Buka browser di HP (Chrome/Safari)
+3. Paste link
+4. Website LANGSUNG MUNCUL dengan design lengkap!
+
+========================================
+? KEUNTUNGAN:
+========================================
+
+? TAMPIL SEMPURNA - Bukan kode, tapi websitenya
+? GRATIS selamanya
+? CEPAT - Pakai CDN global
+? PERMANEN - Link tidak berubah
+? Mobile Responsive
+? Semua efek glass dan gradient bekerja
+
+========================================
+?? YANG AKAN KAMU LIHAT:
+========================================
+
+? Header dengan logo InStrategic
+? Navigation menu purple
+? IHSG Index dengan angka besar
+? Card glass effect (transparan blur)
+? Top Gainers - 5 saham naik (hijau)
+? Top Losers - 5 saham turun (merah)
+? Sector Performance - 6 sektor
+? Background gradient purple/black
+? Hover effects smooth
+? Responsive di semua ukuran layar
+
+========================================
+?? GITHUB PAGES (Instruksi Manual):
+========================================
+
+Jika mau link custom GitHub Pages:
+https://griyakuvillas-art.github.io/InStrategic/
+
+Cara aktifkan (1 menit):
+1. Buka: https://github.com/griyakuvillas-art/InStrategic/settings/pages
+2. Di "Source", pilih: "main" branch
+3. Klik "Save"
+4. Tunggu 1-2 menit
+5. Link akan aktif!
+
+========================================
+
+?? REKOMENDASI: Gunakan link GITHACK (nomor 1)
+   Ini yang paling bagus dan langsung tampil!
+
+========================================
