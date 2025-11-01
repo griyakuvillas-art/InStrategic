@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InStrategic - Market Overview (Real-Time)</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -64,6 +65,37 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
+        
+        #ihsgChart {
+            max-height: 400px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+        
+        .time-range-buttons button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: rgba(104, 0, 252, 0.2);
+            border: 1px solid rgba(104, 0, 252, 0.3);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .time-range-buttons button:hover {
+            background: rgba(104, 0, 252, 0.4);
+            border-color: rgba(104, 0, 252, 0.6);
+        }
+        
+        .time-range-buttons button.active {
+            background: linear-gradient(135deg, #6800FC, #8B5CF6);
+            border-color: #6800FC;
+            box-shadow: 0 4px 12px rgba(104, 0, 252, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -101,7 +133,7 @@
 
                         <!-- IHSG Index -->
                         <div class="glass-card p-8 mb-8">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
                                 <div>
                                     <div class="flex items-center space-x-3 mb-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#6800FC]">
@@ -120,6 +152,22 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- Time Range Buttons -->
+                            <div class="time-range-buttons flex flex-wrap gap-2 mb-4">
+                                <button onclick="changeTimeRange('1D')" id="btn-1D">1 Hari</button>
+                                <button onclick="changeTimeRange('1W')" id="btn-1W">1 Minggu</button>
+                                <button onclick="changeTimeRange('1M')" id="btn-1M">1 Bulan</button>
+                                <button onclick="changeTimeRange('6M')" id="btn-6M">6 Bulan</button>
+                                <button onclick="changeTimeRange('1Y')" id="btn-1Y">1 Tahun</button>
+                                <button onclick="changeTimeRange('5Y')" class="active" id="btn-5Y">5 Tahun</button>
+                                <button onclick="changeTimeRange('MAX')" id="btn-MAX">Max</button>
+                            </div>
+                            
+                            <!-- Chart -->
+                            <div class="chart-container">
+                                <canvas id="ihsgChart"></canvas>
+                            </div>
                         </div>
 
                         <!-- Top Gainers & Losers -->
@@ -134,7 +182,6 @@
                                     <h3 class="text-2xl font-bold text-white">Top Gainers</h3>
                                 </div>
                                 <div class="space-y-4" id="top-gainers">
-                                    <!-- Will be populated by JavaScript -->
                                     <div class="text-center text-gray-400 py-8 loading-pulse">Loading stocks...</div>
                                 </div>
                             </div>
@@ -149,7 +196,6 @@
                                     <h3 class="text-2xl font-bold text-white">Top Losers</h3>
                                 </div>
                                 <div class="space-y-4" id="top-losers">
-                                    <!-- Will be populated by JavaScript -->
                                     <div class="text-center text-gray-400 py-8 loading-pulse">Loading stocks...</div>
                                 </div>
                             </div>
@@ -161,6 +207,11 @@
     </div>
 
     <script>
+        // Global variables
+        let ihsgChart;
+        let currentRange = '5Y';
+        let historicalData = { labels: [], data: [] };
+        
         // Stock symbols for Indonesia Stock Exchange
         const STOCKS = {
             gainers: [
@@ -179,10 +230,9 @@
             ]
         };
 
-        // Yahoo Finance API endpoints (using free proxy)
+        // Yahoo Finance API - Fetch stock data
         async function fetchStockData(symbol) {
             try {
-                // Using Yahoo Finance API v8 (Free, no API key needed)
                 const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`;
                 const response = await fetch(url);
                 const data = await response.json();
@@ -190,7 +240,6 @@
                 if (data.chart && data.chart.result && data.chart.result[0]) {
                     const result = data.chart.result[0];
                     const meta = result.meta;
-                    const quote = result.indicators.quote[0];
                     
                     const currentPrice = meta.regularMarketPrice;
                     const previousClose = meta.previousClose || meta.chartPreviousClose;
@@ -211,6 +260,183 @@
             }
         }
 
+        // Fetch historical data for chart
+        async function fetchHistoricalData(symbol, range) {
+            try {
+                let interval = '1d';
+                let period = range.toLowerCase();
+                
+                // Adjust interval based on range
+                if (range === '1D') {
+                    interval = '5m';
+                    period = '1d';
+                } else if (range === '1W') {
+                    interval = '30m';
+                    period = '5d';
+                } else if (range === '1M') {
+                    period = '1mo';
+                } else if (range === '6M') {
+                    period = '6mo';
+                } else if (range === '1Y') {
+                    period = '1y';
+                } else if (range === '5Y') {
+                    period = '5y';
+                } else if (range === 'MAX') {
+                    period = 'max';
+                }
+                
+                const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=${interval}&range=${period}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.chart && data.chart.result && data.chart.result[0]) {
+                    const result = data.chart.result[0];
+                    const timestamps = result.timestamp;
+                    const prices = result.indicators.quote[0].close;
+                    
+                    const labels = timestamps.map(ts => new Date(ts * 1000));
+                    const chartData = prices.map((price, i) => price || prices[i-1] || 0);
+                    
+                    return { labels, data: chartData };
+                }
+                return { labels: [], data: [] };
+            } catch (error) {
+                console.error(`Error fetching historical data:`, error);
+                return { labels: [], data: [] };
+            }
+        }
+
+        // Initialize Chart
+        function initChart() {
+            const ctx = document.getElementById('ihsgChart').getContext('2d');
+            
+            ihsgChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'IHSG',
+                        data: [],
+                        borderColor: '#6800FC',
+                        backgroundColor: 'rgba(104, 0, 252, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHoverBackgroundColor: '#6800FC',
+                        pointHoverBorderColor: '#fff',
+                        pointHoverBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(10, 10, 15, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#a78bfa',
+                            borderColor: '#6800FC',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return 'IHSG: ' + context.parsed.y.toLocaleString('id-ID', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    });
+                                },
+                                title: function(context) {
+                                    const date = new Date(context[0].label);
+                                    return date.toLocaleDateString('id-ID', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                        hour: currentRange === '1D' ? '2-digit' : undefined,
+                                        minute: currentRange === '1D' ? '2-digit' : undefined
+                                    });
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#9ca3af',
+                                maxTicksLimit: 8,
+                                callback: function(value, index) {
+                                    const date = new Date(this.getLabelForValue(value));
+                                    if (currentRange === '1D') {
+                                        return date.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+                                    } else if (currentRange === '1W') {
+                                        return date.toLocaleDateString('id-ID', { month: 'short', day: 'numeric' });
+                                    } else if (currentRange === '1M' || currentRange === '6M') {
+                                        return date.toLocaleDateString('id-ID', { month: 'short', day: 'numeric' });
+                                    } else {
+                                        return date.toLocaleDateString('id-ID', { year: '2-digit', month: 'short' });
+                                    }
+                                }
+                            }
+                        },
+                        y: {
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#9ca3af',
+                                callback: function(value) {
+                                    return value.toLocaleString('id-ID');
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update chart with new data
+        async function updateChart(range) {
+            const data = await fetchHistoricalData('^JKSE', range);
+            historicalData = data;
+            
+            if (ihsgChart && data.labels.length > 0) {
+                ihsgChart.data.labels = data.labels;
+                ihsgChart.data.datasets[0].data = data.data;
+                ihsgChart.update('none');
+            }
+        }
+
+        // Change time range
+        function changeTimeRange(range) {
+            currentRange = range;
+            
+            // Update button states
+            document.querySelectorAll('.time-range-buttons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`btn-${range}`).classList.add('active');
+            
+            // Update chart
+            updateChart(range);
+        }
+
         // Fetch IHSG Index
         async function updateIHSG() {
             const data = await fetchStockData('^JKSE');
@@ -218,13 +444,11 @@
                 const priceEl = document.getElementById('ihsg-price');
                 const changeEl = document.getElementById('ihsg-change');
                 
-                // Format price with commas
                 const formattedPrice = data.price.toLocaleString('id-ID', { 
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2 
                 });
                 
-                // Format change
                 const changeSign = data.change >= 0 ? '+' : '';
                 const changeColor = data.change >= 0 ? 'text-green-500' : 'text-red-500';
                 const icon = data.change >= 0 ? 
@@ -237,6 +461,28 @@
                 
                 changeEl.className = `flex items-center justify-end space-x-2 text-xl font-semibold ${changeColor}`;
                 changeEl.innerHTML = `${icon}<span>${changeSign}${data.changePercent.toFixed(2)}% (${changeSign}${data.change.toFixed(2)})</span>`;
+                
+                // Update chart with latest price (add to end)
+                if (ihsgChart && historicalData.labels.length > 0) {
+                    const now = new Date();
+                    const lastLabel = historicalData.labels[historicalData.labels.length - 1];
+                    
+                    // Only add if it's a new time point (avoid duplicates)
+                    if (now - lastLabel > 60000) { // 1 minute difference
+                        historicalData.labels.push(now);
+                        historicalData.data.push(data.price);
+                        
+                        // Keep only last 1000 points for performance
+                        if (historicalData.labels.length > 1000) {
+                            historicalData.labels.shift();
+                            historicalData.data.shift();
+                        }
+                        
+                        ihsgChart.data.labels = historicalData.labels;
+                        ihsgChart.data.datasets[0].data = historicalData.data;
+                        ihsgChart.update('none');
+                    }
+                }
             }
         }
 
@@ -245,7 +491,6 @@
             const container = document.getElementById(containerId);
             const stocksData = [];
             
-            // Fetch all stocks
             for (const stock of stocks) {
                 const data = await fetchStockData(stock.symbol);
                 if (data) {
@@ -253,7 +498,6 @@
                 }
             }
             
-            // Render stocks
             if (stocksData.length > 0) {
                 container.innerHTML = stocksData.map(stock => {
                     const changeColor = stock.change >= 0 ? 'text-green-500' : 'text-red-500';
@@ -291,15 +535,26 @@
         }
 
         // Initial load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateAllData();
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('?? Initializing InStrategic Market Overview...');
+            
+            // Initialize chart
+            initChart();
+            
+            // Load initial data
+            console.log('?? Loading 5 years historical data...');
+            await updateChart('5Y');
+            
+            console.log('?? Loading real-time data...');
+            await updateAllData();
             
             // Auto-refresh every 2 seconds
             setInterval(updateAllData, 2000);
             
             console.log('? Real-time market data active!');
+            console.log('?? Chart updated with 5 years data');
             console.log('?? Updates every 2 seconds');
-            console.log('?? Using Yahoo Finance API (Free)');
+            console.log('?? Purple theme: #6800FC');
         });
     </script>
 </body>
