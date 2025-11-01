@@ -899,9 +899,9 @@ async function initializeChart() {
             datasets: [{
                 label: 'IHSG',
                 data: [],
-                borderColor: '#A78BFA',
-                backgroundColor: 'rgba(167, 139, 250, 0.2)',
-                borderWidth: 4,
+                borderColor: '#E9D5FF',
+                backgroundColor: 'rgba(233, 213, 255, 0.3)',
+                borderWidth: 6,
                 fill: true,
                 tension: 0.4,
                 pointRadius: 0,
@@ -934,15 +934,15 @@ async function initializeChart() {
             scales: {
                 x: {
                     display: true,
-                    grid: { color: 'rgba(255, 255, 255, 0.08)', drawBorder: false },
-                    ticks: { color: '#9ca3af', maxTicksLimit: 10 }
+                    grid: { color: 'rgba(255, 255, 255, 0.15)', drawBorder: false },
+                    ticks: { color: '#d1d5db', maxTicksLimit: 10 }
                 },
                 y: {
                     display: true,
                     position: 'right',
-                    grid: { color: 'rgba(255, 255, 255, 0.08)', drawBorder: false },
+                    grid: { color: 'rgba(255, 255, 255, 0.15)', drawBorder: false },
                     ticks: {
-                        color: '#9ca3af',
+                        color: '#d1d5db',
                         callback: function(value) { return value.toLocaleString('id-ID'); }
                     }
                 }
