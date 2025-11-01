@@ -1,0 +1,67 @@
+========================================
+   🔥 LINK TERBARU - GRAFIK PASTI MUNCUL
+========================================
+
+⚡ GUNAKAN LINK INI (Bypass Cache):
+
+1️⃣ JSDELIVR (Update Tercepat):
+https://cdn.jsdelivr.net/gh/griyakuvillas-art/InStrategic@latest/index.html
+
+2️⃣ GITHUB RAW (Always Fresh):
+https://raw.githubusercontent.com/griyakuvillas-art/InStrategic/main/index.html
+
+3️⃣ STATICALLY (Force Refresh):
+https://cdn.statically.io/gh/griyakuvillas-art/InStrategic/main/index.html?env=dev
+
+========================================
+📱 CARA BUKA DI HP:
+========================================
+
+PENTING! Lakukan Hard Refresh:
+
+1. Buka link jsDelivr (nomor 1) di browser
+2. Tunggu loading selesai
+3. Tekan Ctrl+F5 (Windows/Linux) 
+   atau Cmd+Shift+R (Mac)
+   atau Long press tombol Refresh di mobile
+4. Scroll ke bawah ke section IHSG
+5. Grafik warna UNGU akan muncul!
+
+========================================
+✅ YANG HARUS TERLIHAT:
+========================================
+
+Di bawah tulisan IHSG, Anda akan lihat:
+
+1. Tombol-tombol time range:
+   [1 Hari] [1 Minggu] [1 Bulan] etc.
+
+2. GRAFIK warna UNGU di bawahnya
+   (Garis ungu dengan area fill transparan)
+
+3. Grafik akan bergerak/update sendiri
+
+Jika BELUM muncul:
+- Clear cache browser (Settings > Clear cache)
+- Gunakan Incognito/Private mode
+- Coba browser lain (Chrome/Firefox)
+
+========================================
+🔧 TROUBLESHOOTING:
+========================================
+
+Jika masih tidak muncul grafik:
+
+1. Buka Developer Console (F12)
+2. Lihat tab "Console"
+3. Cek ada error Chart.js atau tidak
+4. Screenshot dan kasih tau saya
+
+========================================
+
+⚡ LINK PALING AMPUH:
+https://cdn.jsdelivr.net/gh/griyakuvillas-art/InStrategic@latest/index.html
+
+Coba link ini SEKARANG!
+
+========================================
