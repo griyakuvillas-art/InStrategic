@@ -1,0 +1,80 @@
+?? LINK WEBSITE YANG BENAR - InStrategic Market Dashboard
+================================================================
+
+Repo GitHub Anda:
+- Username: griyakuvillas-art
+- Repo: InStrategic
+- Branch: main
+
+? FILE SUDAH DI-PUSH! Tunggu 2-3 menit untuk cache CDN update.
+
+----------------------------------------------------------------
+?? BUKA DI HP/LAPTOP (PILIH SALAH SATU):
+----------------------------------------------------------------
+
+?? OPTION 1 - HTMLPreview (RECOMMENDED):
+https://htmlpreview.github.io/?https://github.com/griyakuvillas-art/InStrategic/blob/main/index.html
+
+?? OPTION 2 - jsDelivr CDN (PALING CEPAT):
+https://cdn.jsdelivr.net/gh/griyakuvillas-art/InStrategic@main/index.html
+
+?? OPTION 3 - Statically CDN:
+https://cdn.statically.io/gh/griyakuvillas-art/InStrategic/main/index.html
+
+?? OPTION 4 - GitHack:
+https://raw.githack.com/griyakuvillas-art/InStrategic/main/index.html
+
+?? OPTION 5 - RawGit (alternative):
+https://rawcdn.githack.com/griyakuvillas-art/InStrategic/main/index.html
+
+----------------------------------------------------------------
+?? PENTING - JIKA MASIH ERROR:
+----------------------------------------------------------------
+
+1. TUNGGU 5 MENIT (CDN butuh waktu update cache)
+
+2. HARD REFRESH di browser:
+   - Chrome Android: Menu > Settings > Clear browsing data > Cached images
+   - Chrome Desktop: Ctrl + Shift + R (Windows) atau Cmd + Shift + R (Mac)
+   - Safari: Cmd + Option + R
+
+3. BUKA MODE INCOGNITO:
+   - Chrome: Menu (?) > New Incognito Tab
+   - Safari: Menu > Private Browsing
+
+4. CEK GITHUB:
+   Pastikan file index.html ada di:
+   https://github.com/griyakuvillas-art/InStrategic/blob/main/index.html
+
+----------------------------------------------------------------
+?? YANG HARUS TERLIHAT:
+----------------------------------------------------------------
+
+? Logo InStrategic di atas
+? Menu: Home, Services, Market, News, Agent, About
+? Bagian "Live Stock Prices Today"
+? Card IHSG dengan angka bergerak real-time
+? GRAFIK UNGU ?? di bawah angka IHSG (INI YANG BARU!)
+? Tombol: [1D] [1W] [1M] [6M] [1Y] [5Y] [MAX]
+? Top Gainers & Top Losers dengan harga bergerak
+
+----------------------------------------------------------------
+?? JIKA MASIH BERMASALAH:
+----------------------------------------------------------------
+
+Buka di laptop, tekan F12, lihat tab Console, lalu:
+
+1. Screenshot SEMUA pesan error (yang merah ?)
+2. Screenshot apa yang terlihat di website
+3. Kirim ke saya
+
+Atau kasih tau saya:
+- Apa yang muncul di browser? (kosong? error? code?)
+- Browser apa? (Chrome, Safari, Firefox?)
+- Device apa? (HP Android, iPhone, Laptop?)
+
+================================================================
+Update: 2025-11-01
+Status: ? PUSHED TO MAIN BRANCH
+Branch: main (bukan cursor/... lagi)
+================================================================
