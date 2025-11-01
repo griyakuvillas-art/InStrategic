@@ -1,0 +1,198 @@
+# ?? CARA AKTIFKAN GITHUB PAGES
+
+## STEP-BY-STEP (5 MENIT):
+
+---
+
+### ?? STEP 1: Buka Settings
+
+**Copy link ini dan paste di browser:**
+
+```
+https://github.com/griyakuvillas-art/InStrategic/settings/pages
+```
+
+**ATAU:**
+
+1. Buka: https://github.com/griyakuvillas-art/InStrategic
+2. Klik tab **"Settings"** (paling kanan)
+3. Di sidebar kiri, scroll ke bawah
+4. Klik **"Pages"** (ada ikon ??)
+
+---
+
+### ?? STEP 2: Konfigurasi Pages
+
+Di halaman GitHub Pages, Anda akan lihat form seperti ini:
+
+```
+???????????????????????????????????????????????????
+?  GitHub Pages                                   ?
+???????????????????????????????????????????????????
+?                                                 ?
+?  Build and deployment                           ?
+?                                                 ?
+?  Source                                         ?
+?  ???????????????????????????????????           ?
+?  ? Deploy from a branch        ?  ?           ?
+?  ???????????????????????????????????           ?
+?                                                 ?
+?  Branch                                         ?
+?  ????????????  ????????????  ????????         ?
+?  ? None  ? ?  ? /(root) ??  ? Save ?         ?
+?  ????????????  ????????????  ????????         ?
+?                                                 ?
+???????????????????????????????????????????????????
+```
+
+**SETTING INI:**
+
+1. **Source**: Pilih **"Deploy from a branch"** (biasanya sudah dipilih)
+
+2. **Branch**: 
+   - Klik dropdown pertama, pilih **"main"**
+   - Dropdown kedua tetap **"/ (root)"**
+
+3. Klik tombol **"Save"** (biru)
+
+---
+
+### ? STEP 3: Tunggu Build
+
+Setelah klik Save:
+
+1. Halaman akan refresh
+2. Muncul banner kuning: **"GitHub Pages source saved"**
+3. Tunggu **2-5 menit** untuk build pertama kali
+
+**Cek progress build:**
+
+Buka: https://github.com/griyakuvillas-art/InStrategic/actions
+
+Anda akan lihat workflow:
+- ?? **Kuning (sedang berjalan)** = Tunggu
+- ? **Hijau (centang)** = SELESAI!
+- ? **Merah (X)** = Error (kasih tau saya)
+
+---
+
+### ? STEP 4: Buka Website
+
+Setelah build selesai (ada ? hijau di Actions):
+
+**Copy link ini dan buka di browser HP/laptop:**
+
+```
+https://griyakuvillas-art.github.io/InStrategic/
+```
+
+**Atau kembali ke:**
+```
+https://github.com/griyakuvillas-art/InStrategic/settings/pages
+```
+
+Di bagian atas akan muncul box hijau:
+```
+???????????????????????????????????????????????????
+? ? Your site is live at                         ?
+?    https://griyakuvillas-art.github.io/...     ?
+???????????????????????????????????????????????????
+```
+
+Klik link itu!
+
+---
+
+### ?? YANG HARUS TERLIHAT:
+
+Setelah website terbuka:
+
+? Logo InStrategic di kiri atas
+? Menu: Market Overview, Stocks, AI Trading, News
+? Header "Market Overview"
+? Card IHSG dengan angka besar
+? **GRAFIK UNGU** ?? DI BAWAH IHSG ? INI YANG PENTING!
+? 7 tombol: [1 Hari] [1 Minggu] [1 Bulan] [6 Bulan] [1 Tahun] [5 Tahun] [MAX]
+? Top Gainers & Top Losers
+
+Harga akan **bergerak real-time** tiap 2 detik!
+
+---
+
+## ?? TROUBLESHOOTING:
+
+### Masalah 1: "404 Page Not Found"
+
+**Solusi:**
+- Tunggu 5 menit lagi (build mungkin belum selesai)
+- Hard refresh: Ctrl + Shift + R (PC) atau Cmd + Shift + R (Mac)
+- Buka mode incognito
+
+### Masalah 2: Branch "main" tidak ada di dropdown
+
+**Solusi:**
+- Pilih **"master"** (beberapa repo pakai nama ini)
+- Atau cek di: https://github.com/griyakuvillas-art/InStrategic/branches
+
+### Masalah 3: Build gagal (? merah di Actions)
+
+**Solusi:**
+- Screenshot error di Actions tab
+- Kirim ke saya
+- Atau coba pilih branch "gh-pages" kalau ada
+
+### Masalah 4: Chart tidak muncul
+
+**Solusi:**
+- Hard refresh (Ctrl + Shift + R)
+- Buka DevTools (F12) ? Tab Console
+- Screenshot semua pesan error (yang merah)
+- Kirim ke saya
+
+---
+
+## ?? BUTUH BANTUAN?
+
+**Kasih tau saya:**
+
+1. ? atau ? Sudah buka Settings > Pages?
+2. ? atau ? Sudah setting Branch = main?
+3. ? atau ? Sudah klik Save?
+4. ? atau ? Build Actions sudah hijau?
+5. Link apa yang dibuka?
+6. Screenshot (jika ada error)
+
+---
+
+## ?? LINK PENTING:
+
+| Fungsi | Link |
+|--------|------|
+| **Settings Pages** | https://github.com/griyakuvillas-art/InStrategic/settings/pages |
+| **Actions (build progress)** | https://github.com/griyakuvillas-art/InStrategic/actions |
+| **Website (setelah aktif)** | https://griyakuvillas-art.github.io/InStrategic/ |
+| **Bukti screenshot** | https://github.com/griyakuvillas-art/InStrategic/blob/main/BUKTI_CHART_BERFUNGSI.png |
+
+---
+
+## ?? TIMELINE:
+
+- **0:00** - Buka Settings > Pages
+- **0:30** - Setting branch = main, klik Save
+- **1:00** - Build dimulai (cek Actions)
+- **3:00** - Build selesai ?
+- **3:30** - Buka website
+- **3:31** - **CHART MUNCUL!** ??
+
+---
+
+**Total waktu: ~3-5 menit**
+
+**Difficulty: ? (Sangat mudah)**
+
+**Saya tunggu konfirmasi Anda!** ??
+
+---
+
+*Update: 2025-11-01 17:00 UTC*
+*Chart tested & working - Screenshot available*
