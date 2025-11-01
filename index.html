@@ -824,8 +824,8 @@ body {
 <button onclick="changeRange('5Y')" id="btn-5Y" class="range-btn active">5 Tahun</button>
 <button onclick="changeRange('MAX')" id="btn-MAX" class="range-btn">Max</button>
 </div>
-<div style="position:relative;height:400px;width:100%;background:rgba(255,255,255,0.02);border-radius:8px;padding:10px">
-<canvas id="ihsgChart"></canvas>
+<div style="position:relative;height:400px;width:100%;background:linear-gradient(180deg, rgba(104,0,252,0.05) 0%, rgba(0,0,0,0.3) 100%);border-radius:12px;padding:16px;border:1px solid rgba(167,139,250,0.2);box-shadow:inset 0 2px 8px rgba(0,0,0,0.3)">
+<canvas id="ihsgChart" style="filter:drop-shadow(0 0 8px rgba(167,139,250,0.3))"></canvas>
 </div>
 </div>
 </div><div class="grid md:grid-cols-2 gap-8 mb-8"><div class="glass-card p-6" style="opacity: 1; transform: none;"><div class="flex items-center space-x-2 mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up w-6 h-6 text-green-500" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg><h3 class="text-2xl font-bold text-white">Top Gainers</h3></div><div class="space-y-4"><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/GGRM" data-discover="true"><div><div class="font-bold text-white">GGRM</div><div class="text-sm text-gray-400">Gudang Garam Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 17.300</div><div class="text-sm font-semibold text-green-500">+11.61%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/AMMN" data-discover="true"><div><div class="font-bold text-white">AMMN</div><div class="text-sm text-gray-400">Amman Mineral Internasional Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 7.100</div><div class="text-sm font-semibold text-green-500">+2.16%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/BBRI" data-discover="true"><div><div class="font-bold text-white">BBRI</div><div class="text-sm text-gray-400">Bank Rakyat Indonesia Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 3.980</div><div class="text-sm font-semibold text-green-500">+1.79%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/SMGR" data-discover="true"><div><div class="font-bold text-white">SMGR</div><div class="text-sm text-gray-400">Semen Indonesia Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 2.760</div><div class="text-sm font-semibold text-green-500">+1.47%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/UNVR" data-discover="true"><div><div class="font-bold text-white">UNVR</div><div class="text-sm text-gray-400">Unilever Indonesia Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 2.580</div><div class="text-sm font-semibold text-green-500">+0.78%</div></div></a></div></div><div class="glass-card p-6" style="opacity: 1; transform: none;"><div class="flex items-center space-x-2 mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-down w-6 h-6 text-red-500" aria-hidden="true"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline><polyline points="16 17 22 17 22 11"></polyline></svg><h3 class="text-2xl font-bold text-white">Top Losers</h3></div><div class="space-y-4"><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/ASII" data-discover="true"><div><div class="font-bold text-white">ASII</div><div class="text-sm text-gray-400">Astra International Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 6.150</div><div class="text-sm font-semibold text-red-500">-1.99%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/MAPI" data-discover="true"><div><div class="font-bold text-white">MAPI</div><div class="text-sm text-gray-400">Mitra Adiperkasa Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 1.290</div><div class="text-sm font-semibold text-red-500">-2.27%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/ACES" data-discover="true"><div><div class="font-bold text-white">ACES</div><div class="text-sm text-gray-400">Ace Hardware Indonesia Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 444</div><div class="text-sm font-semibold text-red-500">-2.63%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/KLBF" data-discover="true"><div><div class="font-bold text-white">KLBF</div><div class="text-sm text-gray-400">Kalbe Farma Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 1.275</div><div class="text-sm font-semibold text-red-500">-3.04%</div></div></a><a class="flex items-center justify-between p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors" href="/stock/ADRO" data-discover="true"><div><div class="font-bold text-white">ADRO</div><div class="text-sm text-gray-400">Adaro Energy Indonesia Tbk</div></div><div class="text-right"><div class="font-semibold text-white">Rp 1.885</div><div class="text-sm font-semibold text-red-500">-4.80%</div></div></a></div></div></div><div class="glass-card p-8" style="opacity: 1; transform: none;"><div class="flex items-center space-x-2 mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap w-6 h-6 text-[#6800FC]" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg><h3 class="text-2xl font-bold text-white">Sector Performance</h3></div><div class="grid md:grid-cols-3 gap-4"><div class="p-4 bg-white/5 rounded-lg"><div class="text-white font-semibold mb-2">Perbankan</div><div class="text-2xl font-bold text-red-500">-0.63%</div></div><div class="p-4 bg-white/5 rounded-lg"><div class="text-white font-semibold mb-2">Telekomunikasi</div><div class="text-2xl font-bold text-red-500">-1.10%</div></div><div class="p-4 bg-white/5 rounded-lg"><div class="text-white font-semibold mb-2">Konsumen</div><div class="text-2xl font-bold text-green-500">+2.39%</div></div><div class="p-4 bg-white/5 rounded-lg"><div class="text-white font-semibold mb-2">Energi</div><div class="text-2xl font-bold text-green-500">+1.88%</div></div><div class="p-4 bg-white/5 rounded-lg"><div class="text-white font-semibold mb-2">Properti</div><div class="text-2xl font-bold text-green-500">+1.96%</div></div><div class="p-4 bg-white/5 rounded-lg"><div class="text-white font-semibold mb-2">Infrastruktur</div><div class="text-2xl font-bold text-green-500">+2.32%</div></div></div></div></div></div></div></div></div>
@@ -899,15 +899,23 @@ async function initializeChart() {
             datasets: [{
                 label: 'IHSG',
                 data: [],
-                borderColor: '#A78BFA',
-                backgroundColor: 'rgba(167, 139, 250, 0.3)',
-                borderWidth: 3,
+                borderColor: '#C4B5FD',
+                backgroundColor: 'rgba(196, 181, 253, 0.2)',
+                borderWidth: 4,
                 fill: true,
                 tension: 0.4,
-                pointRadius: 1,
-                pointBackgroundColor: '#A78BFA',
-                pointBorderColor: '#A78BFA',
-                pointBorderWidth: 1,
+                pointRadius: 0,
+                pointHoverRadius: 8,
+                pointHoverBackgroundColor: '#C4B5FD',
+                pointHoverBorderColor: '#fff',
+                pointHoverBorderWidth: 3,
+                segment: {
+                    borderColor: ctx => {
+                        const curr = ctx.p1.parsed.y;
+                        const prev = ctx.p0.parsed.y;
+                        return curr > prev ? '#10B981' : curr < prev ? '#EF4444' : '#C4B5FD';
+                    }
+                },
                 pointHoverRadius: 8,
                 pointHoverBackgroundColor: '#A78BFA',
                 pointHoverBorderColor: '#fff',
@@ -937,15 +945,28 @@ async function initializeChart() {
             scales: {
                 x: {
                     display: true,
-                    grid: { color: 'rgba(255, 255, 255, 0.15)', drawBorder: false },
-                    ticks: { color: '#d1d5db', maxTicksLimit: 10 }
+                    grid: { 
+                        color: 'rgba(255, 255, 255, 0.1)', 
+                        drawBorder: false,
+                        lineWidth: 1
+                    },
+                    ticks: { 
+                        color: '#9ca3af', 
+                        maxTicksLimit: 8,
+                        font: { size: 11 }
+                    }
                 },
                 y: {
                     display: true,
                     position: 'right',
-                    grid: { color: 'rgba(255, 255, 255, 0.15)', drawBorder: false },
+                    grid: { 
+                        color: 'rgba(255, 255, 255, 0.1)', 
+                        drawBorder: false,
+                        lineWidth: 1
+                    },
                     ticks: {
                         color: '#d1d5db',
+                        font: { size: 12, weight: 'bold' },
                         callback: function(value) { return value.toLocaleString('id-ID'); }
                     }
                 }
