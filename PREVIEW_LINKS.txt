@@ -1,0 +1,72 @@
+========================================
+   LINK PREVIEW WEBSITE - HTMLPREVIEW
+========================================
+
+?? LINK UTAMA (HTMLPreview.github.io):
+https://htmlpreview.github.io/?https://github.com/griyakuvillas-art/InStrategic/blob/cursor/clone-invest-genius-website-details-a369/index.html
+
+? Link ini menggunakan layanan HTMLPreview.github.io
+? GRATIS dan PERMANEN (tidak akan hilang!)
+? Bisa dibuka dari HP, tablet, atau komputer
+? Tidak perlu login atau registrasi
+
+========================================
+LINK ALTERNATIF:
+========================================
+
+?? Raw.Githack (Faster CDN):
+https://raw.githack.com/griyakuvillas-art/InStrategic/cursor/clone-invest-genius-website-details-a369/index.html
+
+?? GitHub Raw (Direct):
+https://raw.githubusercontent.com/griyakuvillas-art/InStrategic/cursor/clone-invest-genius-website-details-a369/index.html
+
+?? GitHub Repository:
+https://github.com/griyakuvillas-art/InStrategic/blob/cursor/clone-invest-genius-website-details-a369/index.html
+
+========================================
+CARA MENGGUNAKAN:
+========================================
+
+?? DI HP:
+1. Copy salah satu link di atas
+2. Buka browser (Chrome/Safari/Firefox)
+3. Paste link dan tekan Enter
+4. Website langsung muncul!
+
+?? DI KOMPUTER:
+- Klik link langsung
+- Atau copy-paste ke browser
+
+========================================
+KEUNTUNGAN HTMLPREVIEW:
+========================================
+
+? GRATIS selamanya
+? Link PERMANEN (tidak berubah)
+? Tidak perlu server sendiri
+? Fast loading dengan GitHub CDN
+? Support semua browser modern
+? Mobile responsive
+? SSL/HTTPS secure
+
+========================================
+ISI WEBSITE:
+========================================
+
+? Market Overview - Bursa Efek Indonesia
+? IHSG Index: 8,163.875 (-0.25%)
+? Top Gainers: GGRM (+11.61%), AMMN, BBRI, SMGR, UNVR
+? Top Losers: ADRO (-4.80%), KLBF, ACES, MAPI, ASII
+? Sector Performance: Banking, Telecom, Consumer, Energy, Property, Infrastructure
+? Premium gradient purple/black design
+? Glass morphism effects
+? Fully responsive
+
+========================================
+Clone dari: 
+https://invest-genius-25.preview.emergentagent.com/market
+========================================
+
+Dibuat: 1 November 2025
+Teknologi: HTML5 + Tailwind CSS
+Repository: GitHub (Public)
